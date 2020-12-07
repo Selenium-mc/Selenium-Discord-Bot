@@ -23,6 +23,7 @@ exts = (
     "commands.fun.lev",
     "commands.fun.portnuber",
     "commands.fun.wut",
+    "commands.fun.horse",
      
     "commands.message.getmsg",
     "commands.message.msgquery",

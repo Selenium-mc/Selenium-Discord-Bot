@@ -47,8 +47,8 @@ class YtdlCog(commands.Cog):
         # self.loadingqueue[l_id]["end"] = True
 
         await loadingmsg.edit(content=f"||{ctx.message.author.mention}||\nhttps://Selenium-BOT.seleniumdevs.repl.co/video/{urllib.parse.quote_plus(video.title)}.mp4")
-        resp = subprocess.check_output(f"curl -F'file=@files/videos/{video.title}.mp4' https://0x0.st")
-        await ctx.send(resp)
+        #resp = subprocess.check_output(f"curl -F'file=@files/videos/{video.title}.mp4' https://0x0.st")
+        #await ctx.send(resp)
 
 
 def setup(bot):
