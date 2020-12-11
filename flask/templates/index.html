@@ -6,5 +6,11 @@
     <body>
         <!-- Hello curious person! -->
         <pre>Nothing to see here... yet!</pre>
+        <pre>Some videos you can click on to watch</pre>
+        {% for i in vidoes %}
+            <br>
+            <a href="https://Selenium-Bot.seleniumdevs.repl.co/video/{{i}}">{{i}}</a>
+
+        {% endfor %}
     </body>
 </html>

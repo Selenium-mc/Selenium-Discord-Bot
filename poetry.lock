@@ -56,19 +56,8 @@ version = "7.1.2"
 
 [[package]]
 category = "main"
-description = "A mirror package for discord.py. Please install that instead."
-name = "discord"
-optional = false
-python-versions = "*"
-version = "1.0.1"
-
-[package.dependencies]
-"discord.py" = ">=1.0.1"
-
-[[package]]
-category = "main"
 description = "A Python wrapper for the Discord API"
-name = "discord.py"
+name = "discord-py"
 optional = false
 python-versions = ">=3.5.3"
 version = "1.5.1"
@@ -162,7 +151,7 @@ description = "A Minecraft server inter-process communication library."
 name = "mcipc"
 optional = false
 python-versions = ">=3.8"
-version = "1.4.5"
+version = "1.5.4"
 
 [[package]]
 category = "main"
@@ -171,14 +160,6 @@ name = "multidict"
 optional = false
 python-versions = ">=3.5"
 version = "4.7.6"
-
-[[package]]
-category = "main"
-description = "PycURL -- A Python Interface To The cURL library"
-name = "pycurl"
-optional = false
-python-versions = ">=3.5"
-version = "7.43.0.6"
 
 [[package]]
 category = "main"
@@ -240,10 +221,10 @@ description = "YouTube video downloader"
 name = "youtube-dl"
 optional = false
 python-versions = "*"
-version = "2020.12.2"
+version = "2020.12.9"
 
 [metadata]
-content-hash = "8c0a44a5fec5251d0f1f32d1d1c1a7a5ab61fe4d6918b6e41c648b188a4a1298"
+content-hash = "7a26232aba77f6903b9c5d0cf9a1b8b5c8a1037c5a9b802fac4161eeb50dc4e1"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -278,11 +259,7 @@ click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
 ]
-discord = [
-    {file = "discord-1.0.1-py3-none-any.whl", hash = "sha256:9d4debb4a37845543bd4b92cb195bc53a302797333e768e70344222857ff1559"},
-    {file = "discord-1.0.1.tar.gz", hash = "sha256:ff6653655e342e7721dfb3f10421345fd852c2a33f2cca912b1c39b3778a9429"},
-]
-"discord.py" = [
+discord-py = [
     {file = "discord.py-1.5.1-py3-none-any.whl", hash = "sha256:2367359e31f6527f8a936751fc20b09d7495dd6a76b28c8fb13d4ca6c55b7563"},
     {file = "discord.py-1.5.1.tar.gz", hash = "sha256:def00dc50cf36d21346d71bc89f0cad8f18f9a3522978dc18c7796287d47de8b"},
 ]
@@ -345,8 +322,8 @@ markupsafe = [
     {file = "MarkupSafe-1.1.1.tar.gz", hash = "sha256:29872e92839765e546828bb7754a68c418d927cd064fd4708fab9fe9c8bb116b"},
 ]
 mcipc = [
-    {file = "mcipc-1.4.5-py3-none-any.whl", hash = "sha256:ca1f4b1c8c5efbcd833f3b94778ab398f4271a41758265d193939ee6daaa0100"},
-    {file = "mcipc-1.4.5.tar.gz", hash = "sha256:fe9b81ba2a5a73b92470277809d42c9d86a715d8e2fb21540d867b5411081446"},
+    {file = "mcipc-1.5.4-py3-none-any.whl", hash = "sha256:c579ff3b6c514546ba83479449cba0e0570583a694d5ab830c704fb2f7b5876a"},
+    {file = "mcipc-1.5.4.tar.gz", hash = "sha256:806985bbd1ed282a0e1ba13430b3877a4c19a808125facdce97ab1bb421a3c15"},
 ]
 multidict = [
     {file = "multidict-4.7.6-cp35-cp35m-macosx_10_14_x86_64.whl", hash = "sha256:275ca32383bc5d1894b6975bb4ca6a7ff16ab76fa622967625baeebcf8079000"},
@@ -366,9 +343,6 @@ multidict = [
     {file = "multidict-4.7.6-cp38-cp38-win32.whl", hash = "sha256:5cf311a0f5ef80fe73e4f4c0f0998ec08f954a6ec72b746f3c179e37de1d210d"},
     {file = "multidict-4.7.6-cp38-cp38-win_amd64.whl", hash = "sha256:7388d2ef3c55a8ba80da62ecfafa06a1c097c18032a501ffd4cabbc52d7f2b19"},
     {file = "multidict-4.7.6.tar.gz", hash = "sha256:fbb77a75e529021e7c4a8d4e823d88ef4d23674a202be4f5addffc72cbb91430"},
-]
-pycurl = [
-    {file = "pycurl-7.43.0.6.tar.gz", hash = "sha256:8301518689daefa53726b59ded6b48f33751c383cf987b0ccfbbc4ed40281325"},
 ]
 python-levenshtein = [
     {file = "python-Levenshtein-0.12.0.tar.gz", hash = "sha256:033a11de5e3d19ea25c9302d11224e1a1898fe5abd23c61c7c360c25195e3eb1"},
@@ -406,6 +380,6 @@ yarl = [
     {file = "yarl-1.5.1.tar.gz", hash = "sha256:c22c75b5f394f3d47105045ea551e08a3e804dc7e01b37800ca35b58f856c3d6"},
 ]
 youtube-dl = [
-    {file = "youtube_dl-2020.12.2-py2.py3-none-any.whl", hash = "sha256:daa514c0d36af478fe249ea93ca63ae3aaa60ac5f82aa3d5514bce9ba7ed8451"},
-    {file = "youtube_dl-2020.12.2.tar.gz", hash = "sha256:bc82acb0b59b25b822fad85bef0cbe78e5754ca532e3bd6899fe06386e2b8e7c"},
+    {file = "youtube_dl-2020.12.9-py2.py3-none-any.whl", hash = "sha256:54180b7708156a4d7077d65816fb55a2c6d9be89bccbc36e40b5f90e99796d8d"},
+    {file = "youtube_dl-2020.12.9.tar.gz", hash = "sha256:cf32d3e106a63d1519c54a2c39aae449031dd1e18a5a443786c2feb5ab842e6b"},
 ]

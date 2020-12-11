@@ -17,7 +17,7 @@ class EmojisCog(commands.Cog):
     )
     async def emojis(self, ctx):
         emojis = [
-            f"<:{e.name}:{e.id}>"
+            f"<{'a' if e.animated else ''}:{e.name}:{e.id}>"
             for e in 
             ctx.message.guild.emojis
         ]

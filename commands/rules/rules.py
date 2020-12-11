@@ -12,11 +12,13 @@ class RulesCog(commands.Cog):
         channel = bot.get_channel(737096170043605032)
 
     
-    @commands.group(name='rules', aliases=['rule'], invoke_without_command=True)
-    async def rules(self, ctx, command: str, *args):
+    @commands.group(
+        name='rules',
+        aliases=['rule']
+    )
+    async def rules(self, ctx):
         if not 764121607081426945 in list(map(lambda r: r.id, ctx.message.author.roles)):
             await TextUtil.blink(ctx, "You do not have the `wheel` role.", ctx.message)
-            return
     
 
     @rules.command(name='init')

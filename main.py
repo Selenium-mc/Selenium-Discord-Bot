@@ -18,12 +18,11 @@ exts = (
     "commands.media.ytdl",
     "commands.media.music",
     
-    "commands.fun.cat",
     "commands.fun.deletethis",
     "commands.fun.lev",
     "commands.fun.portnuber",
     "commands.fun.wut",
-    "commands.fun.horse",
+    "commands.fun.notexist",
      
     "commands.message.getmsg",
     "commands.message.msgquery",

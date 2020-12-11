@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 
+from PIL import Image
+
 import re
 
 import utils.TextUtil as TextUtil
@@ -41,7 +43,6 @@ class MessageEventCog(commands.Cog):
             await TextUtil.blink("creeper", message, 1, True)
         elif "toad" in message.content.lower():
             await TextUtil.blink("frog", message, 1, True)
-        
 
 
 def setup(bot):

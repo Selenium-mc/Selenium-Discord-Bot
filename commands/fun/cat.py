@@ -14,8 +14,8 @@ class CatCog(commands.Cog):
 
     @commands.command(
         name="cat",
-        aliases=("dog", "joj"),
-        help="Get's a random cat picture.",
+        aliases=["george"],
+        help="Gets a random cat picture.",
         usage="cat"
     )
     async def cat(self, ctx):

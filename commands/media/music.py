@@ -5,51 +5,39 @@ from discord.voice_client import VoiceClient
 import ffmpeg
 
 
+exts = (
+    "play",
+    "list",
+    "disconnect"
+)
+
+
 class MusicCog(commands.Cog):
     
     def __init__(self, bot):
+        global commands
+
         self.bot = bot
+        self.voice = None
+
+        for command in exts:
+            im = __import__(f"commands.media.music_sub.{command}").media.music_sub.__dict__
+            im[command].Initialize(self)
+    
+    def get(self, k):
+        return self.__dict__[k]
+    
+    def set(self, k, v):
+        self.__dict__[k] = v
+
         
-    @commands.command(
-        name='music'
+    @commands.group(
+        name='music',
+        invoke_without_subcommand=True
     )
-    async def music(self, ctx, command, *args):
-        # channel = self.bot.get_channel(737093341493198953)
-    
-        if command == "play":
-            channel = ctx.author.voice.channel
-            song = ' '.join(args)
-    
-            # fuzzy match
-            match = TextUtil.find_closest(song, get_songs(True))
-            if match:
-                player = discord.FFmpegPCMAudio(f'files/music/{match}.mp3')
-                await ctx.send(f"Playing :notes:  `{match}`")
-                self.voice = await channel.connect()
-            else:
-                await ctx.send(f"Song `{song}` does not exist.")
-                return
-
-        elif command == "list":
-            f = '\n'.join(list(map(lambda f:'• '+f, get_songs())))
-            await ctx.send(f"List of songs:\n```{f}```")
-            return
-
-        elif command in ["disconnect", "dc", "leave"]:
-            if self.voice:
-                await self.voice.disconnect()
-            else:
-                await ctx.send("Already disconnected.")
-
-            return
-        
-        elif command == "state":
-            await ctx.send(self.voice)
-            return
-    
-        # https://stackoverflow.com/a/62107725 owo
-    
-        self.voice.play(player, after=None)
+    async def music(self, ctx):
+        if ctx.invoked_subcommand is None:
+            await ctx.send("You didn't specify a command!")
 
 
 def setup(bot):

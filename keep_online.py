@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory, render_template
 from threading import Thread
 import json
+import os
 
 
 app = Flask(__name__, template_folder="flask/templates")
@@ -9,7 +10,7 @@ app.config['UPLOAD_FOLDER'] = "files/videos/"
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", vidoes=os.listdir("files/videos/"))
 
 
 @app.route("/backup/<id>")
@@ -28,6 +29,7 @@ def getrules(id):
 def returnfile(file):
     try:
         file = file.replace("+", " ")
+        file = file.replace("%20", " ")
         return send_from_directory(app.config['UPLOAD_FOLDER'], file)
     except:
         return f"<pre>File '{file}' not found</pre>"
