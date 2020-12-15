@@ -19,7 +19,7 @@
 - Counting
   - [ ] Add support for binary
   - [ ] Fix broken regex pattern (what happened there?)
-  - [ ] Update number on startup
+  - [ ] Update number on startup (and verify)
 
 - Selenium Bot website
   - [ ] Replace `Nothing to see here`
