@@ -8,36 +8,24 @@ import os
 keep_online.start()
 bot = commands.Bot(command_prefix=';', help_command=None)
 
-exts = (
-    "commands.help",
-        
-    "commands.rules.rules",
-    # "commands.rules.init",
-    # "commands.rules.add",
-    
-    "commands.media.ytdl",
-    "commands.media.music",
-    
-    "commands.fun.deletethis",
-    "commands.fun.lev",
-    "commands.fun.portnuber",
-    "commands.fun.wut",
-    "commands.fun.notexist",
-     
-    "commands.message.getmsg",
-    "commands.message.msgquery",
-    "commands.message.emojis",
-    
-    "commands.minecraft.players",
-     
-    "commands.count.count",
-    
-    "events.ready",
-    "events.message",
-    "events.react",
-    
-    "commands.test"
-)
+exts = []
+
+for root, dirs, files in os.walk("commands", topdown=False):
+    for name in files:
+        if "_sub" in root or "__pycache__" in root:
+            continue
+            
+        if name.endswith(".py") and not "__init__" in name:
+            exts.append(
+                os.path.join(root, name).split(".")[0].replace("/", ".")
+            )
+
+for root, dirs, files in os.walk("events", topdown=False):
+    for name in files:
+        if name.endswith(".py") and not "__pycache__" in name:
+            exts.append(
+                os.path.join(root, name).split(".")[0].replace("/", ".")
+            )
 
 
 @bot.command(name="shutdown")
@@ -66,5 +54,54 @@ async def credits(ctx):
 if __name__ == '__main__':
     for extension in exts:
         bot.load_extension(extension)
+
+#just temp code to register slash command
+url = "https://discord.com/api/v8/applications/743517399101210725/guilds/737093341493198949/commands"
+
+json = {
+    "name": "help",
+    "description": "Run this command to see the bot's commands.",
+    "options": [
+        {
+            "name": "Category",
+            "description": "The category of command you want to get help for",
+            "type": 3,
+            "required": False,
+            "choices": [
+                {
+                    "name": "Rules",
+                    "value": "Help about rule commands"
+                   
+                },
+                {
+                    "name": "Music",
+                    "value": "Help about music commands"
+                 
+                },
+                {
+                    "name": "Fun",
+                    "value": "Help about fun commands"
+                   
+                },
+                {
+                    "name": "Message",
+                    "value": "Help about message commands"
+                }
+
+            ]
+        },
+
+    ]
+}
+
+# For authorization, you can use either your bot token 
+#headers = {
+#    "Authorization": "Bot " + os.getenv("TOKEN")
+#}
+
+
+
+#r = requests.post(url, headers=headers, json=json)
+#print(r.content)
 
 bot.run(os.getenv("TOKEN"))

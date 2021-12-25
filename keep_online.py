@@ -4,13 +4,13 @@ import json
 import os
 
 
-app = Flask(__name__, template_folder="flask/templates")
+app = Flask("SeleniumBot", template_folder="flask/templates")
 app.config['UPLOAD_FOLDER'] = "files/videos/"
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", vidoes=os.listdir("files/videos/"))
+    return render_template("index.html", videos=os.listdir("files/videos/"))
 
 
 @app.route("/backup/<id>")
@@ -28,8 +28,6 @@ def getrules(id):
 @app.route('/video/<file>')
 def returnfile(file):
     try:
-        file = file.replace("+", " ")
-        file = file.replace("%20", " ")
         return send_from_directory(app.config['UPLOAD_FOLDER'], file)
     except:
         return f"<pre>File '{file}' not found</pre>"

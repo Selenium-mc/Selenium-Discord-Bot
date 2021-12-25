@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 
 import utils.TextUtil as TextUtil
+import utils.JsonUtil as JsonUtil
 
 
 class CountCog(commands.Cog):
@@ -11,7 +12,9 @@ class CountCog(commands.Cog):
 
     @commands.command(
         name="count",
-        aliases=["number"]
+        aliases=["number"],
+        help="Shows the leaderboard in the count channel.",
+        usage="count <leaderboard/update>"
     )
     async def count(self, ctx, command, *args):
         if command == "leaderboard": loadingmsg = await TextUtil.send_loading(ctx.channel)
@@ -32,6 +35,20 @@ class CountCog(commands.Cog):
                 embed.add_field(name=l[0], value=f"Counted **{l[1]}** time{'s' if l[1] > 1 else ''}", inline=False)
 
             await loadingmsg.edit(content="", embed=embed)
+        
+        elif command == "update":
+            number = list(await channel.history(limit=1).flatten())[-1]
+            numberint = int(number.content.split(' ')[0])
+            data = JsonUtil.get("count")
+
+            data["776554955418501141"] = {
+                "value": numberint,
+                "uid": number.author.id
+            }
+
+            JsonUtil.dump("count", data)
+
+            await ctx.message.add_reaction("\N{THUMBS UP SIGN}")
 
 
 def setup(bot):

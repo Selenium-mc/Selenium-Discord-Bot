@@ -11,9 +11,10 @@ class ReactRoleCog(commands.Cog):
 
     @commands.command(name="reactrole")
     async def reactrole(self, ctx):
+        return
         channel = self.bot.get_channel(776508927843237888)
         await channel.send("React to this message for roles!")
 
 
 def setup(bot):
-    bot.add_cog(HelpCog(bot))
+    bot.add_cog(ReactRoleCog(bot))

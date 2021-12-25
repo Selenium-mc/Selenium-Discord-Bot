@@ -12,7 +12,7 @@ import utils.JsonUtil as JsonUtil
 class MessageEventCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.number_pattern = re.compile("(\d+)(?: ?-.+)?") # for counting
+        self.number_pattern = re.compile("(\d+)(\s?-.*)?") # for counting
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -25,8 +25,8 @@ class MessageEventCog(commands.Cog):
             numbers = JsonUtil.get("count")
 
             if match and\
-               int(match.group(1)) == (v:=numbers["776554955418501141"]["value"]+1) and\
-               message.author.id != numbers["776554955418501141"]["uid"]:
+                int(match.group(1)) == (v:=numbers["776554955418501141"]["value"]+1) and\
+                message.author.id != numbers["776554955418501141"]["uid"]:
                 numbers["776554955418501141"] = {
                     "value": v,
                     "uid": message.author.id

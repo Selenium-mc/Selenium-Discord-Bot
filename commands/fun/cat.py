@@ -14,7 +14,7 @@ class CatCog(commands.Cog):
 
     @commands.command(
         name="cat",
-        aliases=["george"],
+        aliases=["dog","joj"],
         help="Gets a random cat picture.",
         usage="cat"
     )

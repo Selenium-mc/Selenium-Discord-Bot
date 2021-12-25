@@ -1,10 +1,5 @@
-import discord
-from discord.ext import commands
-
 import asyncio
 from fuzzywuzzy import process
-
-import utils.TextUtil as TextUtil
 
 
 def find_closest(string, options, margin=75):
